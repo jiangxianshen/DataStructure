@@ -1,0 +1,28 @@
+1、触发异常
+我们可以使用raise语句自己触发异常
+raise语法格式如下：
+raise [Exception [, args [, traceback]]]
+实例
+def functionName( level ):
+    if level < 1:
+        raise Exception("Invalid level!", level)
+        # 触发异常后，后面的代码就不会再执行
+
+2、yield
+yield关键字
+（1）yield 是一个类似 return 的关键字，只是这个函数返回的是个生成器
+（2）当你调用这个函数的时候，函数内部的代码并不立马执行 ，这个函数只是返回一个生成器对象
+（3）当你使用for进行迭代的时候，函数中的代码才会执行
+>>> def createGenerator() :
+...    mylist = range(3)
+...    for i in mylist :
+...        yield i*i
+...
+>>> mygenerator = createGenerator() # create a generator
+>>> print(mygenerator) # mygenerator is an object!
+<generator object createGenerator at 0xb7555c34>
+>>> for i in mygenerator:
+...     print(i)
+0
+1
+4
